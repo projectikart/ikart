@@ -1,0 +1,99 @@
+###Client.py (This code currently only sends one csv file which is the raw data)###
+  import time
+  import socket
+
+  TCP_IP = '192.168.1.105'
+  TCP_PORT = 5005
+
+  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  s.connect((TCP_IP, TCP_PORT))
+  f = open('sensingdata.csv', 'rb')
+  print 'Sending...'
+  l = f.read(1024)
+  while (l):
+      print 'Sending...'
+      s.send(l)
+      l = f.read(1024)
+  print "Done Sending"
+  time.sleep(30)
+
+
+
+
+###Server.py###
+
+  import socket
+  import sys
+
+  TCP_IP = ""
+  TCP_PORT = 5005
+
+  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  s.bind((TCP_IP, TCP_PORT))
+  s.listen(5)
+
+  while True:
+      conn, addr = s.accept()
+      f = open('sensing1.csv', 'wb')
+      print "Got connection from", addr
+      print "Receiving..."
+      l = conn.recv(1024)
+      while (l):
+          print "Receiving Data..."
+          f.write(l)
+          l = conn.recv(1024)
+          print "Done Receiving"
+      f.close()
+      conn.close()
+      
+      
+      
+"""Client2.py (This code is for the appending of averaging data)"""
+  import time
+  import socket
+
+  TCP_IP = '192.168.1.105'
+  TCP_PORT = 5005
+
+  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  s.connect((TCP_IP, TCP_PORT))
+  g = open('average.csv', 'rb')
+  print 'Sending Averaging Data...'
+  l = f.read(1024)
+  while (l):
+      print 'Sending...'
+      s.send(l)
+      l = g.read(1024)
+  print "Done Sending"
+  time.sleep(900)
+
+
+
+###Server2.py###
+
+  import socket
+  import sys
+  import csv
+
+  TCP_IP = ""
+  TCP_PORT = 5005
+
+  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  s.bind((TCP_IP, TCP_PORT))
+  s.listen(5)
+
+  while True:
+      conn, addr = s.accept()
+      g = open('average.csv', 'ab')
+      print "Got connection from", addr
+      print "Receiving Averaging Data..."
+      l = conn.recv(1024)
+      for rows in g:
+      while (l):
+          if row not in rows:
+          print "Receiving Averaging Data..."
+          g.write(l)
+          l = conn.recv(1024)
+          print "Done Receiving"
+      g.close()
+      conn.close()
