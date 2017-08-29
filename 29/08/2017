@@ -2,3 +2,6 @@ Today we strugled to dig up few software requirement for the display of rasberia
 
 Lex terminal is a software which might help.
 
+oh finally with the help of VNC  and putty we are able to connect to raspberry pi. dhcp server is a software which helped to remotely configure the ip of raspberry
+
+Problem: But the problem still exist because the internet in the raspberry pi cannot be accessed.the reason is that the only lan slot is not vacant.
