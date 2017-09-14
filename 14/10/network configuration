@@ -1,0 +1,23 @@
+pi@raspberrypi:~ $ ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr b8:27:eb:a5:d1:79  
+          inet addr:172.20.8.75  Bcast:172.20.31.255  Mask:255.255.224.0
+          inet6 addr: fe80::12d4:8808:9872:ef10/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:31230 errors:0 dropped:190 overruns:0 frame:0
+          TX packets:257 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:1979327 (1.8 MiB)  TX bytes:34381 (33.5 KiB)
+
+pi@raspberrypi:~ $ iwconfig eth0
+eth0      no wireless extensions.
+
+pi@raspberrypi:~ $ sudo route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+172.20.0.0      0.0.0.0         255.255.224.0   U     202    0        0 eth0
+pi@raspberrypi:~ $ sudo route add default gw 172.20.0.188
+pi@raspberrypi:~ $ sudo route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         172.20.0.188    0.0.0.0         UG    0      0        0 eth0
+172.20.0.0      0.0.0.0         255.255.224.0   U     202    0        0 eth0
