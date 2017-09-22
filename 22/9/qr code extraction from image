@@ -1,0 +1,10 @@
+sudo apt-get install python-qrtools
+***code***
+from qrtools import QR
+myCode = QR(filename="/home/pi/Desktop/aa.jpg")
+if myCode.decode():
+  print myCode.data
+  print myCode.data_type
+  print myCode.data_to_string()
+  
+  
