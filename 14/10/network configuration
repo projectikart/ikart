@@ -21,3 +21,4 @@ Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         172.20.0.188    0.0.0.0         UG    0      0        0 eth0
 172.20.0.0      0.0.0.0         255.255.224.0   U     202    0        0 eth0
+unset proxy---unset http_proxy
